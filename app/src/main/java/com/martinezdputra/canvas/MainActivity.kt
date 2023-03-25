@@ -20,13 +20,14 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.martinezdputra.canvas.screen.ClickDetector
+import com.martinezdputra.canvas.screen.scale.ScaleScreen
 import com.martinezdputra.canvas.ui.theme.CanvasTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            ClickDetector()
+            ScaleScreen()
         }
     }
 }
