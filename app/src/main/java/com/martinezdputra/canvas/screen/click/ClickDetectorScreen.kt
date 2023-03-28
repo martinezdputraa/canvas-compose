@@ -1,4 +1,4 @@
-package com.martinezdputra.canvas.screen
+package com.martinezdputra.canvas.screen.click
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.gestures.detectTapGestures
@@ -31,7 +31,7 @@ import kotlin.math.sqrt
 import kotlin.random.Random
 
 @Composable
-fun ClickDetector() {
+fun ClickDetectorScreen() {
     var score by remember {
         mutableStateOf(0)
     }
@@ -111,11 +111,13 @@ fun BallClicker(
         modifier = Modifier.fillMaxSize()
     ) {
         var ballPosition by remember {
-            mutableStateOf(randomOffset(
+            mutableStateOf(
+                randomOffset(
                 radius = radius,
                 width = constraints.maxWidth,
                 height = constraints.maxHeight,
-            ))
+            )
+            )
         }
         var ballColor by remember {
             mutableStateOf(Color.Red)
@@ -144,11 +146,13 @@ fun BallClicker(
                     }
                 }
         ) {
-            drawCircle(
-                color = ballColor,
-                radius = radius,
-                center = ballPosition,
-            )
+            if(enabled) {
+                drawCircle(
+                    color = ballColor,
+                    radius = radius,
+                    center = ballPosition,
+                )
+            }
         }
     }
 }

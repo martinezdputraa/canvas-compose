@@ -31,10 +31,11 @@ fun GenderPicker(
     femaleGradient: List<Color> = listOf(Color(0xFFEA76FF), Color.Magenta),
     spaceBetween: Dp = 50.dp,
     scaleFactor: Float = 7f,
+    initialGender: Gender,
     onGenderSelected: (Gender) -> Unit
 ) {
     var selectedGender by remember {
-        mutableStateOf<Gender>(Gender.Female)
+        mutableStateOf(initialGender)
     }
     var center by remember {
         mutableStateOf(Offset.Unspecified)

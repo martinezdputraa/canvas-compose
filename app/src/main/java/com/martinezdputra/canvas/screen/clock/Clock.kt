@@ -27,6 +27,8 @@ fun Clock(
     initialSecond: Int = 0,
     initialMinute: Int = 0,
     initialHour: Int = 0,
+    delayInMillis: Int = 1000,
+    onUpdateCurrentTime: (hours: Int, minutes: Int, seconds: Int) -> Unit,
 ) {
     var center by remember {
         mutableStateOf(Offset.Zero)
@@ -40,9 +42,9 @@ fun Clock(
     var hours by remember {
         mutableStateOf(initialHour)
     }
-    LaunchedEffect(key1 = true) {
+    LaunchedEffect(key1 = delayInMillis) {
         while (true) {
-            delay(1000)
+            delay(delayInMillis.toLong())
             seconds++
             if(seconds >= 60) {
                 seconds = 0
@@ -55,6 +57,7 @@ fun Clock(
             if(hours >= 12) {
                 hours = 0
             }
+            onUpdateCurrentTime(hours, minutes, seconds)
         }
     }
     Canvas(modifier = modifier) {
@@ -119,7 +122,7 @@ fun Clock(
                 cap = StrokeCap.Round
             )
         }
-        rotate(degrees = (360f / 60f) * minutes) {
+        rotate(degrees = (360f / 60f) * minutes + (360f / 60f / 60f) * seconds) {
             drawLine(
                 color = style.minutesHandColor,
                 start = center,
@@ -131,7 +134,7 @@ fun Clock(
                 cap = StrokeCap.Round
             )
         }
-        rotate(degrees = (360f / 12f) * hours) {
+        rotate(degrees = (360f / 12f) * hours + (360f / 12f / 60f) * minutes) {
             drawLine(
                 color = style.hoursHandColor,
                 start = center,

@@ -11,7 +11,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
-import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.ClipOp
 import androidx.compose.ui.graphics.Color
@@ -23,12 +22,10 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.IntSize
-import androidx.compose.ui.unit.dp
 import com.martinezdputra.canvas.R
-import kotlin.math.roundToInt
 
 @Composable
-fun ImageReveal() {
+fun ImageRevealScreen() {
     var center by remember {
         mutableStateOf(Offset.Zero)
     }
@@ -48,8 +45,8 @@ fun ImageReveal() {
             }
     ) {
         center = this.center
-        val imageWidth = (800 * (maxwell.width.toFloat() / maxwell.height)).toInt()
-        val imageHeight = 800
+        val imageWidth = size.width.toInt()
+        val imageHeight = imageWidth
 
         val imageOffsetX = center.x - imageWidth / 2
         val imageOffsetY = center.y - imageWidth / 2
@@ -72,7 +69,7 @@ fun ImageReveal() {
 
         val circlePath = Path().apply {
             addArc(
-                oval = Rect(cursorPosition, 150f),
+                oval = Rect(cursorPosition, 300f),
                 startAngleDegrees = 0f,
                 sweepAngleDegrees = 360f
             )

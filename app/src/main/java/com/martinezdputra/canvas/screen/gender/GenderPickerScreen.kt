@@ -1,4 +1,4 @@
-package com.martinezdputra.canvas.screen.scale
+package com.martinezdputra.canvas.screen.gender
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -15,25 +15,26 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun ScaleScreen() {
-    var weight by remember {
-        mutableStateOf(80)
-    }
+fun GenderPickerScreen() {
     Column(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier
+            .fillMaxSize()
             .padding(16.dp),
         verticalArrangement = Arrangement.Center,
     ) {
+        var selectedGender by remember {
+            mutableStateOf<Gender>(Gender.Male)
+        }
+
         Text(
             modifier = Modifier.fillMaxWidth(),
             textAlign = TextAlign.Center,
-            text = "What's your weight?",
+            text = "Select your gender",
             style = MaterialTheme.typography.h4
         )
 
@@ -42,21 +43,19 @@ fun ScaleScreen() {
         Text(
             modifier = Modifier.fillMaxWidth(),
             textAlign = TextAlign.Center,
-            text = "$weight Kg",
+            text = "Selected Gender: ${selectedGender.name}",
             style = MaterialTheme.typography.body1
         )
 
-        Spacer(modifier = Modifier.height(100.dp))
+        Spacer(modifier = Modifier.height(8.dp))
 
-        Scale(
-            style = ScaleStyle(
-                scaleWidth = 150.dp,
-            ),
+        GenderPicker(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(300.dp)
-        ) { newWeight ->
-            weight = newWeight
+                .height(200.dp),
+            initialGender = selectedGender
+        ) {
+            selectedGender = it
         }
     }
 }

@@ -1,6 +1,6 @@
 package com.martinezdputra.canvas.screen.gender
 
-sealed interface Gender {
-    object Male: Gender
-    object Female: Gender
+sealed class Gender(val name: String) {
+    object Male: Gender("Male")
+    object Female: Gender("Female")
 }
