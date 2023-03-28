@@ -11,11 +11,12 @@ import androidx.navigation.compose.rememberNavController
 import com.martinezdputra.canvas.screen.BasicShapesScreen
 import com.martinezdputra.canvas.screen.click.ClickDetectorScreen
 import com.martinezdputra.canvas.screen.clock.ClockScreen
-import com.martinezdputra.canvas.screen.gender.GenderPicker
 import com.martinezdputra.canvas.screen.gender.GenderPickerScreen
 import com.martinezdputra.canvas.screen.home.HomeScreen
 import com.martinezdputra.canvas.screen.images.ImageRevealScreen
 import com.martinezdputra.canvas.screen.scale.ScaleScreen
+import com.martinezdputra.canvas.screen.ttt.chat_gpt.ChatGPTTicTacToeScreen
+import com.martinezdputra.canvas.screen.ttt.philipp.PhilippTicTacToeGameScreen
 
 class MainActivity : ComponentActivity() {
     @RequiresApi(Build.VERSION_CODES.O)
@@ -49,6 +50,12 @@ class MainActivity : ComponentActivity() {
                 }
                 composable(Route.BASIC_SHAPES) {
                     BasicShapesScreen()
+                }
+                composable(Route.CHAT_GPT_TTT) {
+                    ChatGPTTicTacToeScreen()
+                }
+                composable(Route.PHILIPP_TTT) {
+                    PhilippTicTacToeGameScreen()
                 }
             }
         }

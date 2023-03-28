@@ -8,4 +8,6 @@ object Route {
     const val IMAGE_REVEAL = "image_reveal"
     const val WEIGHT_SCALE = "weight_scale"
     const val BASIC_SHAPES = "basic_shapes"
+    const val CHAT_GPT_TTT = "chat_gpt_tic_tac_toe"
+    const val PHILIPP_TTT = "philipp_tic_tac_toe"
 }

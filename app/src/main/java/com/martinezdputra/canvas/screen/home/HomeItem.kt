@@ -32,4 +32,12 @@ val homeItems = listOf(
         label = "Basic Shapes",
         route = Route.BASIC_SHAPES,
     ),
+    HomeItem(
+        label = "Chat GPT Generated TicTacToe Game",
+        route = Route.CHAT_GPT_TTT,
+    ),
+    HomeItem(
+        label = "Philipp's TicTacToe Game",
+        route = Route.PHILIPP_TTT,
+    ),
 )
